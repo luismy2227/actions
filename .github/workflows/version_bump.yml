@@ -1,12 +1,12 @@
 name: Patch Version Bump
-on:
-  pull_request:
-    branches:
-      - develop
-    types: [closed]
-  push:
-    branches:
-      - develop
+on: [push]
+  # pull_request:
+  #   branches:
+  #     - develop
+  #   types: [closed]
+  # push:
+  #   branches:
+  #     - develop
 jobs:
   patch-version-bump:
     if: github.event.pull_request.merged == true
