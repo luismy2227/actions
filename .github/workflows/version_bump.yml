@@ -1,0 +1,32 @@
+name: Patch Version Bump
+on:
+  pull_request:
+    branches:
+      - develop
+    types: [closed]
+jobs:
+  patch-version-bump:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_ADMIN_TOKEN }}
+      - name: Use Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Setup Git
+        run: |
+          git config user.name CexCICD
+          git config user.email development@codexitos.com
+          git remote add gh-origin https://CexCICD:${ADMIN_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        env:
+          ADMIN_TOKEN: ${{ secrets.GH_ADMIN_TOKEN }}
+      - name: Bump version patch
+        run: |
+          npm version patch --force
+        env:
+          CI: true
+      - name: Push commit and tag to GitHub
+        run: git push -f gh-origin HEAD:develop --tags

@@ -11,11 +11,24 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^16.1.0",
+    "eslint-config-next": "12.0.10",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.28.0",
+    "jest": "^27.5.1",
+    "prettier": "^2.6.2"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format:check": "prettier --check \"**/*.{ts,tsx,css,json,yaml,yml,js,jsx}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,css,json,yaml,yml,js,jsx}\"",
+    "lint": "react-scripts lint"
   },
   "eslintConfig": {
     "extends": [
