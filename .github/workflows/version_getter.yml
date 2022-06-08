@@ -7,7 +7,10 @@ jobs:
     name: Get Version
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+        name: Cloning the repo
       - id: set_var
+        name: Reading the version
         run: |
           content=`cat ./package.json`
           # the following lines are only required for multi line json
@@ -18,3 +21,4 @@ jobs:
           echo "::set-output name=packageJson::$content"
       - run: |
           echo "${{fromJson(steps.set_var.outputs.packageJson).version}}"
+        name: Writing the version
