@@ -2,11 +2,11 @@ name: Patch Version Bump
 on: 
   pull_request:
     branches:
-      - develop
+      - master
     types: [closed]
   push:
     branches:
-      - develop
+      - master
 jobs:
   patch-version-bump:
     if: github.event.pull_request.merged == true
